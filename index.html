@@ -20,11 +20,18 @@
     <!-- Filtering going on here -->
     <input type="text" ng-model="search" />
     <ul>
+      <!-- "Ng" is the stock directive for angular. This particular directive is used
+      to store some data.  -->
       <li ng-repeat="item in list | filter:search">
         {{item.name}} - <em>{{item.age}}</em>
       </li>
     </ul>
-    <!-- "Ng" is the stock directive for angular. This particular directive is used
-    to store some data.  -->
+    <!-- addPerson() calls the function within the controller, which will add in a new
+    object every time that it is submitted. It will then refresh and set back to zero. -->
+    <form ng-submit="addPerson()">
+      <input type="text" placeholder="name" ng-model="name" />
+      <input type="number" placeholder="age" ng-model="age" />
+      <input type="submit" placeholder="submit" />
+    </form>
   </body>
 </html>

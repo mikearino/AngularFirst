@@ -7,4 +7,10 @@ angular
       { name: 'Ron', age: 5 },
       { name: 'Don', age: 4 },
     ];
+
+    $scope.addPerson = () => {
+      $scope.list.push({ name: $scope.name, age: $scope.age });
+      $scope.name = '';
+      $scope.age = 0;
+    };
   });
