@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <!-- Data Binding stuff. You must declare that it is going to be an application.
   You must type in ng-app.-->
-<html ng-app lang="en">
+<html ng-app="directoryApp" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,10 +15,7 @@
   </head>
   <!-- ng-init allows you to initialize some data when the template is loaded. 
   -->
-  <body
-    ng-init="list = [{name: 'Mike', age: 5999}, {name: 'Pep', age: 9},
-  {name: 'Ron', age: 5},{name: 'Don', age: 4}]"
-  >
+  <body>
     <!-- Filtering going on here -->
     <input type="text" ng-model="search" />
     <ul>
