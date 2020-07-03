@@ -13,11 +13,13 @@
     ></script>
     <title>Angular ¯\_(ツ)_/¯</title>
   </head>
-  <!-- This will change the background color due to the yourName directive -->
-  <body style="background:{{yourName}};">
+  <!-- ng-init allows you to initialize some data when the template is loaded. 
+  -->
+  <body ng-init="list = [{name: 'Mike', age: 5999}, {name: 'Pep', age: 9}]">
+    <ul>
+      <li ng-repeat="item in list">{{item.name}} - <em>{{item.age}}</em></li>
+    </ul>
     <!-- "Ng" is the stock directive for angular. This particular directive is used
     to store some data.  -->
-    <input type="text" ng-model="yourName" placeholder="Enter your name" />
-    <h1>{{yourName}}</h1>
   </body>
 </html>
