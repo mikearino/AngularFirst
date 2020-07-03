@@ -15,9 +15,16 @@
   </head>
   <!-- ng-init allows you to initialize some data when the template is loaded. 
   -->
-  <body ng-init="list = [{name: 'Mike', age: 5999}, {name: 'Pep', age: 9}]">
+  <body
+    ng-init="list = [{name: 'Mike', age: 5999}, {name: 'Pep', age: 9},
+  {name: 'Ron', age: 5},{name: 'Don', age: 4}]"
+  >
+    <!-- Filtering going on here -->
+    <input type="text" ng-model="search" />
     <ul>
-      <li ng-repeat="item in list">{{item.name}} - <em>{{item.age}}</em></li>
+      <li ng-repeat="item in list | filter:search">
+        {{item.name}} - <em>{{item.age}}</em>
+      </li>
     </ul>
     <!-- "Ng" is the stock directive for angular. This particular directive is used
     to store some data.  -->
