@@ -16,21 +16,25 @@
   </head>
   <!-- ng-init allows you to initialize some data when the template is loaded. 
   -->
-  <body ng-controller="directoryController">
+  <body ng-controller="directoryController as dirList">
     <!-- Filtering going on here -->
     <input type="text" ng-model="search" />
     <ul>
       <!-- "Ng" is the stock directive for angular. This particular directive is used
       to store some data.  -->
-      <li ng-repeat="item in list | filter:search">
-        {{item.name}} - <em>{{item.age}}</em>
+      <li
+        ng-repeat="item in dirList.list | filter:search | orderBy:'age' | limitTo:3"
+        class="person - {{item.name | lowercase}}"
+      >
+        {{item.name | uppercase}} -
+        <em>{{item.age | currency:"¥":0}}</em>
       </li>
     </ul>
     <!-- addPerson() calls the function within the controller, which will add in a new
     object every time that it is submitted. It will then refresh and set back to zero. -->
-    <form ng-submit="addPerson()">
-      <input type="text" placeholder="name" ng-model="name" />
-      <input type="number" placeholder="age" ng-model="age" />
+    <form ng-submit="dirList.addPerson()">
+      <input type="text" placeholder="name" ng-model="dirList.name" />
+      <input type="number" placeholder="age" ng-model="dirList.age" />
       <input type="submit" placeholder="submit" />
     </form>
   </body>
