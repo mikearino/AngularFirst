@@ -14,13 +14,22 @@
     <script src="directory.js"></script>
     <title>Angular ¯\_(ツ)_/¯</title>
     <style>
-      .over-thirty {
-        background: red;
-        color: white;
+      ul {
+        list-style: none;
       }
-      .under-thirty {
-        background: blue;
-        color: white;
+      li {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      li span {
+        display: inline-block;
+        line-height: 50px;
+      }
+      li img {
+        margin-right: 10px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
       }
       .hidden {
         display: none;
@@ -39,9 +48,7 @@
         ng-repeat="item in dirList.list | filter:search"
         ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
       >
-      <img ng-src="{{item.img}}"/>
-        {{item.name}} -
-        <em>{{item.age}}</em>
+        <ng-include src="'person.html'"></ng-include>
       </li>
     </ul>
     <button ng-show="!dirList.toggle" ng-Click="dirList.toggle = true">
