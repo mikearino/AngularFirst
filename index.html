@@ -34,6 +34,9 @@
       .hidden {
         display: none;
       }
+      #twitterz {
+        fill: green !important;
+      }
     </style>
   </head>
   <!-- ng-init allows you to initialize some data when the template is loaded. 
@@ -47,8 +50,9 @@
       <li
         ng-repeat="item in dirList.list | filter:search"
         ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
+        ng-include="'person.html'"
       >
-        <ng-include src="'person.html'"></ng-include>
+        
       </li>
     </ul>
     <button ng-show="!dirList.toggle" ng-Click="dirList.toggle = true">
