@@ -43,12 +43,11 @@
         <em>{{item.age}}</em>
       </li>
     </ul>
-    <button
-      ng-Click="!dirList.toggle ? dirList.toggle = true : 
-      dirList.toggle = false"
-    >
+    <button ng-show="!dirList.toggle" ng-Click="dirList.toggle = true">
       Show Names
     </button>
+    <button ng-show="dirList.toggle" dirList.toggle" ng-Click="dirList.toggle = 
+    false">Hide Names</button>
     <!-- addPerson() calls the function within the controller, which will add in a new
     object every time that it is submitted. It will then refresh and set back to zero. -->
     <form ng-submit="dirList.addPerson()">
