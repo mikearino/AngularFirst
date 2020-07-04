@@ -8,7 +8,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
-      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"
+      ;
+    ></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js"
       ;
     ></script>
     <script src="directory.js"></script>
@@ -37,35 +41,49 @@
       #twitterz {
         fill: green !important;
       }
+      ul.ng-enter {
+      transition:5s ease all;
+      opacity:1;
+      }
+      ul.ng-enter.ng-enter-active {
+      opacity:1;
+      }
+      ul.ng-leave {
+      transition:6s ease all;
+      opacity:1;
+      }
+      ul.ng-leave.ng-leave-active {
+      opacity:1;
+      }
     </style>
   </head>
   <!-- ng-init allows you to initialize some data when the template is loaded. 
   -->
+  <!-- "Ng" is the stock directive for angular. This particular directive is used
+  to store some data.  -->
+  <!-- Filtering going on here -->
   <body ng-controller="directoryController as dirList">
-    <!-- Filtering going on here -->
     <input type="text" ng-model="search" />
-    <ul ng-class="{'hidden': !dirList.toggle}">
-      <!-- "Ng" is the stock directive for angular. This particular directive is used
-      to store some data.  -->
-      <li
-        ng-repeat="item in dirList.list | filter:search"
-        ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
-        ng-include="'person.html'"
-      >
-        
-      </li>
+      <ul ng-if="dirList.toggle">
+          <li
+            ng-repeat="item in dirList.list | filter:search"
+            ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
+            ng-include="'person.html'"
+          >
+        </li>
     </ul>
-    <button ng-show="!dirList.toggle" ng-Click="dirList.toggle = true">
-      Show Names
-    </button>
-    <button ng-show="dirList.toggle" dirList.toggle" ng-Click="dirList.toggle = 
-    false">Hide Names</button>
-    <!-- addPerson() calls the function within the controller, which will add in a new
-    object every time that it is submitted. It will then refresh and set back to zero. -->
-    <form ng-submit="dirList.addPerson()">
-      <input type="text" placeholder="name" ng-model="dirList.name" />
-      <input type="number" placeholder="age" ng-model="dirList.age" />
-      <input type="submit" placeholder="submit" />
-    </form>
-  </body>
+  <button ng-show="!dirList.toggle" ng-Click="dirList.toggle = true">
+    Show Names
+  </button>
+  <button ng-show="dirList.toggle" dirList.toggle" ng-Click="dirList.toggle = 
+  false">Hide Names</button>
+  <!-- addPerson() calls the function within the controller, which will add in a new
+  object every time that it is submitted. It will then refresh and set back to zero. -->
+  <form ng-submit="dirList.addPerson()">
+    <input type="text" placeholder="name" ng-model="dirList.name" />
+    <input type="number" placeholder="age" ng-model="dirList.age" />
+    <input type="submit" placeholder="submit" />
+  </form>
+</body>
 </html>
+          
